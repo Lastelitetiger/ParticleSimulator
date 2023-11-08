@@ -7,7 +7,7 @@ std::vector<sf::CircleShape> createRandomBalls(sf::CircleShape circle)
 {
     std::vector<sf::CircleShape> dots = {};
     int counter = 0;
-    while(counter <= 200)
+    while(counter <= 100)
     {
         dots.push_back(circle);
         counter++;
@@ -67,24 +67,24 @@ int main()
         
         
         window.draw(rectangle);    
-        /*
+        window.draw(circle);   
+       std::vector<sf::CircleShape> shapes = createRandomBalls(circle);
+       for(int i=0;i<shapes.size();i++)
+       {
         if(circlePosition.x < 0 || circlePosition.x > 780){
             xVelocity *= -1;
         }
         if(circlePosition.y < 0 || circlePosition.y > 580){
-            yVelocity *= -1;
+                yVelocity *= -1;
         }
-
         circlePosition.x += xVelocity;
+        shapes[i].setPosition(circlePosition);
+        window.draw(shapes[i]);
         circlePosition.y += yVelocity;
-        circle.setPosition(circlePosition);
-        */
-       std::vector<sf::CircleShape> shapes = createRandomBalls(circle);
-       for(int i=0;i<shapes.size();i++)
-       {
-            
-            window.draw(shapes[i]); 
+        shapes[i].setPosition(circlePosition);
+        window.draw(shapes[i]); 
        }
+
         window.display();
     }
 
